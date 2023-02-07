@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { Paper, Grid, TextField, Button } from "@mui/material";
-// import tasksImage from "./../../../public/img/tasks.png";
 import tasksImage from "./../statics/tasks.png";
 
 import "./styles.css";

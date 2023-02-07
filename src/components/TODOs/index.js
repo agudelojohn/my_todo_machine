@@ -11,15 +11,20 @@ function TodoCounter() {
   const [todosDone, setTodosDone] = useState(0);
 
   const handleAdd = (newTask) => {
-    setTodosDone(todosDone + 1);
-    const todos = todoList;
-    todos.push(newTask);
-    setTodoList(todos);
+    setTodoList([...todoList, newTask]);
+  };
+
+  const handleCheck = (isChecked) => {
+    if (isChecked) {
+      setTodosDone(todosDone + 1);
+    } else {
+      setTodosDone(todosDone - 1);
+    }
   };
 
   return (
     <Box sx={{ flexGrow: 1 }}>
-      <Grid container columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
+      <Grid container columnSpacing={{ xs: 1 }}>
         <Grid item xs={6}>
           <TodoModal addTask={handleAdd} />
         </Grid>
@@ -31,7 +36,7 @@ function TodoCounter() {
             sx={{ maxWidth: "90%", margin: "auto", paddingTop: "2rem" }}
           >
             <TodoHeader done={todosDone} total={todoList.length} />
-            <TodoList itemList={todoList} />
+            <TodoList handleCheck={handleCheck} itemList={todoList} />
           </Grid>
         </Grid>
       </Grid>

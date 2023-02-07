@@ -1,12 +1,11 @@
 import React, { Fragment } from "react";
 import { TodoItem } from "../TODOItems";
 
-function TodoList(props) {
+function TodoList({ handleCheck, itemList }) {
   return (
     <Fragment>
-      <h1>Todo list</h1>
-      {props.itemList.map((item) => (
-        <TodoItem />
+      {itemList.map((item) => (
+        <TodoItem taskName={item} key={item} taskDone={handleCheck} />
       ))}
     </Fragment>
   );

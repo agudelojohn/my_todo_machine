@@ -1,11 +1,30 @@
-import React from "react";
+import React, { useState } from "react";
 import { Paper, Grid, TextField, Button } from "@mui/material";
 // import tasksImage from "./../../../public/img/tasks.png";
 import tasksImage from "./../statics/tasks.png";
 
 import "./styles.css";
 
-function TodoModal() {
+function TodoModal({ addTask }) {
+  const [newTask, setNewTask] = useState("");
+
+  const handleChange = (event) => {
+    setNewTask(event.target.value);
+  };
+
+  const handleClick = () => {
+    handleAdd();
+  };
+
+  const handleKeyPress = (event) => {
+    if (event.code === "Enter") handleAdd();
+  };
+
+  const handleAdd = () => {
+    addTask(newTask);
+    setNewTask("");
+  };
+
   return (
     <Paper variant="outlined" className="modalContainer">
       <Grid
@@ -20,11 +39,17 @@ function TodoModal() {
         <TextField
           id="standard-full-width"
           label="Task Name"
-          // helperText="Full width!"
           fullWidth
           className="modalInput"
+          value={newTask}
+          onChange={handleChange}
+          onKeyPress={handleKeyPress}
         />
-        <Button variant="contained" sx={{ marginTop: "1rem" }}>
+        <Button
+          variant="contained"
+          sx={{ marginTop: "1rem" }}
+          onClick={handleClick}
+        >
           Add task
         </Button>
         <img src={tasksImage} alt="Tasks cover" />

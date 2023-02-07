@@ -1,11 +1,11 @@
 import { Fragment } from "react";
-import { TodoCounter } from "./TODOs/index";
+import { TodoCounter } from "./components/TODOs/index";
 
-const fakeTodos = [
-  { text: "Cortar cebolla", completed: false },
-  { text: "Hacer popo", completed: false },
-  { text: "Llorar con la llorona", completed: false },
-];
+// const fakeTodos = [
+//   { text: "Cortar cebolla", completed: false },
+//   { text: "Hacer popo", completed: false },
+//   { text: "Llorar con la llorona", completed: false },
+// ];
 
 function App() {
   return (
